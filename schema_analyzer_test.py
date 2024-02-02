@@ -325,9 +325,9 @@ class TestGenerateSchema(unittest.TestCase):
            return_value={'type': 'object', 'properties': {'key': {'type': 'string'}}})
     def test_success_schema_generation(self, mock_analyze, mock_file):
         input_path = "valid_input.json"
-        output_path = "output_schema.json"
+        output_path = "output_schema"
         generate_schema(input_path, output_path)
-        mock_file.assert_called_with(output_path, 'w')
+        mock_file.assert_called_with("./schema/output_schema.json", 'w')
         handle = mock_file()
         self.assertTrue(handle.write.called)
 

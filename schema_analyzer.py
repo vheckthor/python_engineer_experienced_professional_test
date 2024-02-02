@@ -72,7 +72,7 @@ def analyze_structure(data: dict, is_root: bool = False) -> dict:
 
     return schema
 
-def generate_schema(input_path: str, output_path: str):
+def generate_schema(input_path: str, output_file_name: str):
     """Generate the Output file containing schemas
 
     Args:
@@ -89,6 +89,7 @@ def generate_schema(input_path: str, output_path: str):
     message_data = data.get('message', {})
 
     schema = analyze_structure(message_data, True)
+    output_path = f"./schema/{output_file_name}.json"
     with open(output_path, 'w') as file:
         json.dump(schema, file, indent=2)
     print(f"Operation successful find the output file here => {output_path}")
